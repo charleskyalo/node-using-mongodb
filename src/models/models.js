@@ -1,24 +1,21 @@
 import mongoose from 'mongoose';
 
-const ProductSchema = new mongoose.Schema({
+const Schema = mongoose.Schema;
+
+export const ProductSchema = new Schema({
     name: {
         type: String,
-        required: true
-    },
-    name: {
-        type: String,
-        required: true
+        required: "Enter a product name"
     },
     description: {
         type: String,
-        required: true
+        required: "Enter a decription"
     },
     category: {
         type: String,
     },
     price: {
         type: Number,
-        required: true
     },
     created_date: {
         type: Date,
@@ -27,6 +24,3 @@ const ProductSchema = new mongoose.Schema({
 
 })
 
-
-
-export default ProductSchema;

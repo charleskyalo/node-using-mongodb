@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-import { routes } from './src/routes/routes'
+import routes from './src/routes/routes'
 mongoose.Promise = global.Promise;
 const app = express();
 const PORT = 4000;
