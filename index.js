@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-
+mongoose.Promise = global.Promise;
 const app = express();
 const PORT = 4000;
 
@@ -14,12 +14,17 @@ app.get('/', (req, res) =>
 );
 
 // adding mongoose connection
-let productsDb;
-const dbName = productsDb;
-const url = `mongodb://127.0.0.1:27017/${dbName}`
+
+const url = `mongodb://127.0.0.1:27017/productsDb`
 mongoose.connect(url, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    dbName: "productsDb"
+}).then(() => {
+    console.log("database conncetion ready");
+}).catch(error => {
+    console.log(error);
+    throw new Error("No  connection to mongo detected");
 })
 
 app.listen(PORT, () =>
